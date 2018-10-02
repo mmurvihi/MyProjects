@@ -9,13 +9,10 @@ def blur():
     try:
         if (len(args) < 2):
             print('Usage: python blur.py <image> <OPTIONAL: reach>')
-
         if (len(args) == 2):
             reach = 4
-
         else:
             reach = int(args[2])
-
         filename = args[1]
         infile = open(filename, 'r')
         outfile = open('blur.ppm', 'w')
@@ -61,9 +58,7 @@ def blur():
                 else:
                     col += 1
                 pixellist = []
-
         linenum += 1
-
     updatepixels(pixelslist, outfile, reach)
     outfile.close()
     infile.close()
@@ -77,12 +72,9 @@ def fileformat(header, outfile):
 def groups_of_3(lst):
     lst = [int(elements) for elements in lst]
     groups_of_3 = []
-
     for index in range(0, len(lst), 3):
         groups_of_3.append(lst[index:index + 3])
-
     return groups_of_3
-
 
 #The function neighbor determins which pixels are in the neighboring radius of the currentpixel.
 def neighbor(currentpixel, colx, rowy, pixels, reach):
@@ -95,34 +87,24 @@ def neighbor(currentpixel, colx, rowy, pixels, reach):
         xmin = 0
     else:
         xmin = xmin
-
     if xmax > len(pixels[0]):
         xmax = len(pixels[0])
-
     else:
         xmax = xmax
-
     if ymin < 0:
         ymin = 0
-
     else:
         ymin = ymin
-
-
     if ymax > len(pixels):
         ymax = len(pixels)
-
     else:
         ymax = ymax
-
-
     for x in range (xmin, xmax):
         for y in range(ymin, ymax):
             if x == colx and y == rowy:
                 pass
             else:
                 neighborpixels.append(pixels[y][x])
-
     return neighborpixels
 
 
